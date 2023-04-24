@@ -1,16 +1,16 @@
 // Edge object that is stored for each connection to another node
 	class Edge
 	{
-		int v,w;
+		int dest, weight;
 		
-		public Edge(int v,int w)
+		public Edge(int dest,int weight)
 		{
-			this.v=v; this.w=w;
+			this.dest=dest; this.weight=weight;
 		}
 		
 		@Override
 		public String toString()
 		{
-			return "("+v+","+w+")";
+			return "("+dest+","+weight+")";
 		}
 	}
