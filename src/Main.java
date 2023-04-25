@@ -4,7 +4,7 @@ public class Main {
     public static void main(String[] args) {
         //int numNodes = getNumNodes();
         Graph graph = buildUp(6);
-        checkConnect(graph);
+        calcTime(graph);
     }
 
     /*private static int getNumNodes() {
@@ -37,18 +37,7 @@ public class Main {
         return graph;
     }
 
-    private static void checkConnect(Graph graph){
-        boolean done = false;
-        Scanner scan = new Scanner(System.in).useDelimiter(",|\r\n");
-        while(!done){
-            System.out.println("Input 2 nodes separated by comma to check connection: ");
-            int first = scan.nextInt();
-            int second = scan.nextInt();
-            scan.nextLine();
-            graph.isConnected(first, second);
-            System.out.print("Do you want to check another? ");
-            String ans = scan.nextLine().toLowerCase();
-            if("n".equals(ans) || "no".equals(ans)){done = true;}
-        }
+    private static void calcTime(Graph graph){
+        int totalTime = graph.adjLists
     }
 }

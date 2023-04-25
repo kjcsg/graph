@@ -22,11 +22,9 @@ class Graph
 		LinkedList<Edge> list = adjLists[source-1];
 		for(int i = 0; i<list.size(); i++){
 			if(list.get(i).dest==dest){
-				System.out.println(source + " is connected to " + dest + " with weight " + list.get(i).weight);
 				return true;
 			}
 		}
-		System.out.println(source + " is not connected to " + dest);
 		return false;
 	}
 	
