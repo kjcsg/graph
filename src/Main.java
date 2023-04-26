@@ -4,25 +4,8 @@ public class Main {
     public static void main(String[] args) {
         //int numNodes = getNumNodes();
         Graph graph = buildUp(6);
-        calcTime(graph);
+        routeCalc(graph);
     }
-
-    /*private static int getNumNodes() {
-        Scanner scan = new Scanner(System.in); //Set up scanner for user input
-        int numNodes=-1; //Set up int for number of nodes
-        while(numNodes<1){
-            System.out.println("How many nodes are in your map? (Positive whole number): ");
-            if(scan.hasNextInt()){
-                numNodes = scan.nextInt();
-                if(numNodes<1){
-                    System.out.println("That's not a positive whole number. Try again.");
-                    numNodes=-1;
-                }
-            }
-            else{System.out.println("That's not a positive whole number. Try again.");}
-        }
-        return numNodes;
-    }*/
     
     private static Graph buildUp(int numNodes){
         Graph graph = new Graph(numNodes);
@@ -37,7 +20,31 @@ public class Main {
         return graph;
     }
 
-    private static void calcTime(Graph graph){
+    /*private static void calcTime(Graph graph){
         int totalTime = graph.adjLists
+    }*/
+
+    private static void routeCalc(Graph graph) {
+        Scanner scan = new Scanner(System.in).useDelimiter(",|\r\n"); //Set up scanner for user input
+        List<Integer> path = new ArrayList<Integer>(); //Set up int list for node traversal plan from user
+        System.out.println("Please enter your route plan separated by commas: ");
+        while(scan.hasNextInt()){
+            if(scan.hasNextInt()){
+                path.add(scan.nextInt());
+                scan.hasNextInt();
+            }
+            else{
+                scan.nextLine(); //Clears out scanner
+            }
+        }
+        scan.close();
+
+        int weight = 0;
+        for (int node = 0; node<path.size(); node++) {
+            if(graph.isConnected(path.get(node),path.get(node+1))>0){
+                weight+=graph.isConnected(path.get(node),path.get(node+1));
+            }
+        }
+        System.out.println("The total travel time for "+path+" is "+weight+" minutes.");
     }
 }

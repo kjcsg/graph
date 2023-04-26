@@ -17,15 +17,17 @@ class Graph
 	}
 	
 	// Check if node U is connected to node V
-	public boolean isConnected(int source, int dest)
+	public int isConnected(int source, int dest) //Also made it return weight int if it's connected. More efficient than making another method for weight.
 	{
+		int weight = 0;
 		LinkedList<Edge> list = adjLists[source-1];
 		for(int i = 0; i<list.size(); i++){
 			if(list.get(i).dest==dest){
-				return true;
+				weight = list.get(i).weight;
+				return weight;
 			}
 		}
-		return false;
+		return weight;
 	}
 	
 	// For node U, add a new connection to node V, with weight W
