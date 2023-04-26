@@ -9,7 +9,7 @@ public class Main {
     
     private static Graph buildUp(int numNodes){
         Graph graph = new Graph(numNodes);
-        graph.addEdge(2,1,28);
+        graph.addEdge(2,1,38);
         graph.addEdge(1,4,11);
         graph.addEdge(1,5,19);
         graph.addEdge(1,3,35);
@@ -27,23 +27,25 @@ public class Main {
     private static void routeCalc(Graph graph) {
         Scanner scan = new Scanner(System.in).useDelimiter(",|\r\n"); //Set up scanner for user input
         List<Integer> path = new ArrayList<Integer>(); //Set up int list for node traversal plan from user
-        System.out.println("Please enter your route plan separated by commas: ");
-        while(scan.hasNextInt()){
+        boolean done = false;
+        while(!done){
+            System.out.print("Please enter your route plan separated by commas, enter blank entry when done: ");
             if(scan.hasNextInt()){
                 path.add(scan.nextInt());
-                scan.hasNextInt();
             }
             else{
                 scan.nextLine(); //Clears out scanner
+                done = true;
             }
         }
         scan.close();
 
         int weight = 0;
-        for (int node = 0; node<path.size(); node++) {
+        for (int node = 0; node<path.size()-1; node++) {
             if(graph.isConnected(path.get(node),path.get(node+1))>0){
                 weight+=graph.isConnected(path.get(node),path.get(node+1));
             }
+            
         }
         System.out.println("The total travel time for "+path+" is "+weight+" minutes.");
     }
