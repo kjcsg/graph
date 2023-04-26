@@ -2,7 +2,6 @@ import java.util.*;
 
 class Graph
 {
-	
 	// An array of lists of Edge objects
 	LinkedList<Edge> adjLists[];
 	
